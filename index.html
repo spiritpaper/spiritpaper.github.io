@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spirit Paper</title>
+  <meta name="description" content="Spirit Paper: retro tools for game makers and YouTube creators.">
+  <meta name="theme-color" content="#0a0c1c">
+  <meta property="og:title" content="Spirit Paper">
+  <meta property="og:description" content="Retro tools for game makers and YouTube creators.">
+  <meta property="og:image" content="https://spiritpaper.github.io/spirit.png">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; style-src 'self'; font-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'">
+  <link rel="icon" href="spirit.png">
+  <link rel="preload" href="vendor/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="nav">
+    <a class="nav-logo" href="#top" id="nav-name">Home</a>
+    <div class="nav-links">
+      <a href="#projects">Projects</a>
+      <a href="#support" class="nav-support">Support</a>
+    </div>
+  </nav>
+
+  <main class="wrap" id="top">
+    <header class="hero">
+      <div class="avatar" id="avatar" aria-hidden="true"></div>
+      <div class="avatar-shadow" aria-hidden="true"></div>
+      <h1 id="name"></h1>
+      <p class="tagline" id="bio"></p>
+      <div class="links" id="links"></div>
+      <p class="press-start" aria-hidden="true">PRESS START</p>
+    </header>
+
+    <section class="section" id="projects" hidden>
+      <h2 class="section-title"><span class="step-num">1P</span> Projects</h2>
+      <div class="projects" id="project-list"></div>
+    </section>
+
+    <section class="section" id="support">
+      <h2 class="section-title"><span class="step-num">2P</span> Support me</h2>
+      <p class="section-intro" id="support-text"></p>
+
+      <div class="setup-banner" id="setup-banner" hidden></div>
+
+      <div class="window" id="donate" hidden>
+        <div class="titlebar" aria-hidden="true">
+          <span>SUPPORT.EXE</span>
+          <span class="titlebar-btns"><i></i><i></i><i></i></span>
+        </div>
+        <div class="window-body">
+          <h3 class="step">Select your coin</h3>
+          <div class="tabs" role="tablist" id="tabs"></div>
+
+          <h3 class="step">Send to this address</h3>
+          <div class="panel" id="panel" role="tabpanel">
+            <div class="qr" id="qr" aria-label="QR code of the address"></div>
+            <div class="details">
+              <div class="label">Networks</div>
+              <div class="chips" id="networks"></div>
+              <div class="label">Coins</div>
+              <div class="chips" id="tokens"></div>
+            </div>
+            <div class="address-row">
+              <code class="address" id="address"></code>
+              <button class="copy" id="copy" type="button">Copy</button>
+            </div>
+            <p class="warning" id="warning"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="window other" id="other" hidden>
+        <div class="titlebar" aria-hidden="true">
+          <span>BONUS.EXE</span>
+          <span class="titlebar-btns"><i></i><i></i><i></i></span>
+        </div>
+        <div class="window-body">
+          <h3>Got a different coin?</h3>
+          <p>Pay with hundreds of other cryptocurrencies through a secure checkout.</p>
+          <a class="btn" id="other-link" href="#" target="_blank" rel="noopener noreferrer">Pay with another coin</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <p id="official"></p>
+      <p>Crypto transactions can't be reversed. Always double-check the address and network before sending.</p>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="vendor/qrcode.js"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
