@@ -6,14 +6,19 @@
 window.SITE_CONFIG = {
   // ---------- About you ----------
   name: "Spirit Paper",
-  bio: "Just a guy programming. I make retro tools for game makers and YouTube creators.",
+  bio: "Just a guy programming. I make retro tools for game makers, programmers and YouTube creators.",
 
   // Path to your avatar image. Leave "" to show your initials instead.
   avatar: "spirit.png",
 
-  // Links shown under your name. Each needs a label and an https:// url.
+  // Links shown under your name. Each needs a label and an https:// url
+  // (or mailto: for an email address).
   links: [
     { label: "GitHub", url: "https://github.com/spiritpaper" },
+    { label: "YouTube", url: "https://www.youtube.com/@SpiritPaper" },
+    { label: "Instagram", url: "https://www.instagram.com/realpaperspirit" },
+    { label: "X", url: "https://x.com/imspiritpaper" },
+    { label: "Email", url: "mailto:paperspiritbusiness@gmail.com" },
   ],
 
   // ---------- Projects ----------
@@ -23,6 +28,16 @@ window.SITE_CONFIG = {
   //   image: optional screenshot path, e.g. "images/chipforge.png"
   //   links: buttons; the first one is highlighted
   projects: [
+    {
+      name: "Cursed GIT",
+      description: "Like git, but she has feelings. A terminal game you play on top of a real project: cg works like git, but Miranda, a toxic ex who lives in your repo, judges your commit messages and turns every merge conflict into a boss fight. You learn git by surviving her.",
+      tags: ["CLI", "Game", "Linux", "macOS", "Windows", "Open source"],
+      image: "",
+      links: [
+        { label: "Download", url: "https://github.com/spiritpaper/cursed-git/releases/latest" },
+        { label: "Source", url: "https://github.com/spiritpaper/cursed-git" },
+      ],
+    },
     {
       name: "ChipForge",
       description: "Turn your music into 8-bit chiptune, compose songs on an emulated NES or Game Boy chip, and make retro sound effects for your games. Works in the browser and offline, with a desktop app and Godot and Unity plugins.",

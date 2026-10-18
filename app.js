@@ -58,10 +58,11 @@
     return ok ? Promise.resolve() : Promise.reject();
   }
 
-  // Only allow https links (and same-site relative paths) from config.
+  // Only allow https links, mailto: addresses and same-site relative paths from config.
   function safeUrl(url) {
     url = (url || "").trim();
     if (/^https:\/\//i.test(url)) return url;
+    if (/^mailto:[^\s@?&]+@[^\s@?&]+$/i.test(url)) return url;
     if (/^[\w.\/-]+$/.test(url) && url.indexOf("..") < 0 && url.indexOf("//") < 0) return url;
     console.warn("Ignoring link that isn't https:// :", url);
     return "";
