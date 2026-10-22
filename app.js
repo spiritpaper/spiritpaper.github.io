@@ -97,6 +97,19 @@
       av.textContent = initials(cfg.name);
     }
     (cfg.links || []).forEach(function (l) {
+      if (l.copy) {
+        var b = el("button", "pill", l.label);
+        b.type = "button";
+        b.title = "Copy " + l.label + " username: " + l.copy;
+        b.addEventListener("click", function () {
+          copy(l.copy).then(
+            function () { toast(l.label + ": " + l.copy + " copied"); },
+            function () { toast(l.label + ": " + l.copy); }
+          );
+        });
+        $("links").appendChild(b);
+        return;
+      }
       var a = linkButton(l, "pill");
       if (a) $("links").appendChild(a);
     });
@@ -146,6 +159,41 @@
       root.appendChild(card);
     });
     $("projects").hidden = false;
+  }
+
+  function renderGoals() {
+    var list = cfg.goals || [];
+    if (!list.length) return;
+    var root = $("goal-list");
+    var current = list.findIndex(function (g) { return !g.done; });
+    var usd = function (n) { return "$" + n.toLocaleString("en-US"); };
+    list.forEach(function (g, i) {
+      var cls = "goal" + (g.done ? " done" : i === current ? " current" : "");
+      var li = el("li", cls);
+      li.appendChild(el("span", "goal-lv", "LV" + (i + 1)));
+      var body = el("div", "goal-body");
+      var head = el("div", "goal-head");
+      head.appendChild(el("span", "goal-title", g.title));
+      if (g.done) head.appendChild(el("span", "goal-tag", "CLEAR!"));
+      else if (i === current) head.appendChild(el("span", "goal-tag", "NOW"));
+      body.appendChild(head);
+      if (g.note) body.appendChild(el("p", "goal-note", g.note));
+      var amount = Number(g.amount) || 0;
+      if (amount > 0) {
+        var raised = g.done ? amount : Math.min(Number(g.raised) || 0, amount);
+        var bar = el("div", "goal-bar");
+        bar.setAttribute("aria-hidden", "true");
+        var fill = el("i");
+        fill.style.width = (raised / amount * 100) + "%";
+        bar.appendChild(fill);
+        body.appendChild(bar);
+        body.appendChild(el("p", "goal-amount",
+          usd(raised) + " / " + usd(amount) + (g.monthly ? " a month" : "")));
+      }
+      li.appendChild(body);
+      root.appendChild(li);
+    });
+    $("goals").hidden = false;
   }
 
   function renderWallets() {
@@ -217,7 +265,7 @@
       var idx = wallets.findIndex(function (w) { return w.id === saved; });
       if (idx >= 0) start = idx;
     } catch (e) {}
-    // Deep links like spiritpaper.github.io/#sol open that coin in the support section.
+    // Deep links like spiritpaper.site/#sol open that coin in the support section.
     var hash = location.hash.slice(1);
     var hidx = wallets.findIndex(function (w) { return w.id === hash; });
     if (hidx >= 0) start = hidx;
@@ -239,6 +287,7 @@
 
   renderHeader();
   renderProjects();
+  renderGoals();
   renderWallets();
   renderOther();
 })();

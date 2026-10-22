@@ -12,12 +12,14 @@ window.SITE_CONFIG = {
   avatar: "spirit.png",
 
   // Links shown under your name. Each needs a label and an https:// url
-  // (or mailto: for an email address).
+  // (or mailto: for an email address). Use copy instead of url for a button
+  // that copies text instead of opening a link.
   links: [
     { label: "GitHub", url: "https://github.com/spiritpaper" },
     { label: "YouTube", url: "https://www.youtube.com/@SpiritPaper" },
     { label: "Instagram", url: "https://www.instagram.com/realpaperspirit" },
     { label: "X", url: "https://x.com/imspiritpaper" },
+    { label: "Discord", url: "https://discord.gg/Jq3kHTrpTc" },
     { label: "Email", url: "mailto:paperspiritbusiness@gmail.com" },
   ],
 
@@ -63,8 +65,42 @@ window.SITE_CONFIG = {
   // ---------- Support ----------
   supportText: "If my apps or videos made your day better, you can power up my next level with crypto. Thank you, player!",
 
+  // What donations pay for, in order. The first goal that isn't done is shown
+  // as the current one.
+  //   amount:  cost in US dollars (0 hides the progress bar)
+  //   raised:  dollars received so far for this goal. Update it as donations come in.
+  //   monthly: true for an ongoing cost; it shows "a month" and never gets done
+  //   done:    true once it's paid for, so donors can see their money was used
+  goals: [
+    {
+      title: "Google developer account for YT Toolkit",
+      note: "The fee to publish my outlier tool on the Chrome Web Store, so more creators can find it.",
+      amount: 5, raised: 0, done: false,
+    },
+    {
+      title: "A nice cake with my friend",
+      note: "To celebrate the first win together. Yes, really.",
+      amount: 40, raised: 0, done: false,
+    },
+    {
+      title: "Pay my sister back",
+      note: "She helped me through uni and bought the laptop I build all of this on. She's done a lot for me, so I'm starting with the laptop.",
+      amount: 100, raised: 0, done: false,
+    },
+    {
+      title: "Gym and staying alive",
+      note: "A gym membership and enough for food and bills, so I can keep making things.",
+      amount: 80, raised: 0, monthly: true,
+    },
+    {
+      title: "A monster PC",
+      note: "A machine that can run my own AI models, and maybe a home lab server one day.",
+      amount: 10000, raised: 0, done: false,
+    },
+  ],
+
   // The domain this site lives on. Shown to donors so they can spot fake copies.
-  officialUrl: "spiritpaper.github.io",
+  officialUrl: "spiritpaper.site",
 
   // Your wallet addresses. Paste each one EXACTLY as your wallet shows it.
   // Leave an address as "" to hide that option.

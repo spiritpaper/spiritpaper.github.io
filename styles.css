@@ -375,6 +375,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 72px; }
   padding: 2px 12px;
   font-size: 20px;
 }
+button.pill { background: none; font: inherit; font-size: 20px; cursor: pointer; }
 .pill:hover { border-color: var(--cyan); }
 
 /* ---------- Sections ---------- */
@@ -419,6 +420,42 @@ html { scroll-behavior: smooth; scroll-padding-top: 72px; }
 }
 .btn-ghost:hover { background: var(--line); color: var(--text); }
 
+/* ---------- Goals ---------- */
+
+.goal-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.goal {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  border: 2px solid var(--line);
+  background: var(--bg);
+  padding: 12px 14px;
+}
+.goal-lv {
+  flex: none;
+  font: 10px var(--pixel-font);
+  background: var(--line);
+  color: var(--text);
+  padding: 6px;
+  margin-top: 2px;
+}
+.goal-body { flex: 1; min-width: 0; }
+.goal-head { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; }
+.goal-title { font: 11px/1.6 var(--pixel-font); color: var(--text); }
+.goal-tag { font: 9px var(--pixel-font); padding: 3px 5px; }
+.goal-note { margin: 6px 0 0; color: var(--muted); }
+.goal-bar { height: 12px; margin-top: 10px; background: var(--ghost); }
+.goal-bar i { display: block; height: 100%; background: var(--yellow); }
+.goal-amount { margin: 4px 0 0; color: var(--muted); font-size: 20px; }
+
+.goal.current { border-color: var(--yellow); box-shadow: var(--px) var(--px) 0 var(--shadow); }
+.goal.current .goal-lv { background: var(--yellow); color: var(--bg); }
+.goal.current .goal-title { color: var(--yellow); }
+.goal.current .goal-tag { background: var(--pink); color: var(--bg); animation: blink 1s steps(1) infinite; }
+.goal.done .goal-lv { background: var(--cyan); color: var(--bg); }
+.goal.done .goal-title { color: var(--muted); text-decoration: line-through; }
+.goal.done .goal-tag { background: var(--cyan); color: var(--bg); }
+
 @media (max-width: 520px) {
   .nav-links { gap: 12px; }
   .section-title { font-size: 13px; }
@@ -429,5 +466,5 @@ html { scroll-behavior: smooth; scroll-padding-top: 72px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .avatar, .avatar-shadow, .press-start, .tab.active .tab-name::before { animation: none; }
+  .avatar, .avatar-shadow, .press-start, .tab.active .tab-name::before, .goal-tag { animation: none; }
 }
