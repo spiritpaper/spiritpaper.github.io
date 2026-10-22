@@ -87,7 +87,7 @@ window.SITE_CONFIG = {
     {
       title: "Pay my sister back",
       note: "She helped me through uni and bought the laptop I build all of this on. She's done a lot for me, so I'm starting with the laptop.",
-      amount: 100, raised: 0, done: false,
+      amount: 1000, raised: 0, done: false,
     },
     {
       title: "Gym and staying alive",
