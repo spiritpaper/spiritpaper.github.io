@@ -32,7 +32,7 @@ window.SITE_CONFIG = {
   projects: [
     {
       name: "Cursed GIT",
-      description: "Like git, but she has feelings. A terminal game you play on top of a real project: cg works like git, but Miranda, a toxic ex who lives in your repo, judges your commit messages and turns every merge conflict into a boss fight. You learn git by surviving her.",
+      description: "Like git, but she has feelings: Miranda, a toxic ex who lives in your repo, judges your commits and turns every merge conflict into a boss fight. A terminal game where you learn git by surviving her.",
       tags: ["CLI", "Game", "Linux", "macOS", "Windows", "Open source"],
       image: "",
       links: [
