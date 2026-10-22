@@ -127,7 +127,7 @@
       var card = el("article", "project window");
       var bar = el("div", "titlebar");
       bar.setAttribute("aria-hidden", "true");
-      bar.appendChild(el("span", null, "STAGE " + String(i + 1).padStart(2, "0")));
+      bar.appendChild(el("span", null, "STAGE " + String(i + 1).padStart(2, "0") + "/" + String(list.length).padStart(2, "0")));
       var btns = el("span", "titlebar-btns");
       btns.appendChild(el("i")); btns.appendChild(el("i")); btns.appendChild(el("i"));
       bar.appendChild(btns);
@@ -170,15 +170,20 @@
     list.forEach(function (g, i) {
       var cls = "goal" + (g.done ? " done" : i === current ? " current" : "");
       var li = el("li", cls);
-      li.appendChild(el("span", "goal-lv", "LV" + (i + 1)));
-      var body = el("div", "goal-body");
-      var head = el("div", "goal-head");
-      head.appendChild(el("span", "goal-title", g.title));
-      if (g.done) head.appendChild(el("span", "goal-tag", "CLEAR!"));
-      else if (i === current) head.appendChild(el("span", "goal-tag", "NOW"));
-      body.appendChild(head);
-      if (g.note) body.appendChild(el("p", "goal-note", g.note));
       var amount = Number(g.amount) || 0;
+
+      // Each goal is a one-line row; tapping it shows the story and progress.
+      var row = el("button", "goal-row");
+      row.type = "button";
+      row.appendChild(el("span", "goal-lv", "LV" + (i + 1)));
+      row.appendChild(el("span", "goal-title", g.title));
+      if (g.done) row.appendChild(el("span", "goal-tag", "CLEAR!"));
+      else if (i === current) row.appendChild(el("span", "goal-tag", "NOW"));
+      if (amount > 0) row.appendChild(el("span", "goal-cost", usd(amount) + (g.monthly ? "/mo" : "")));
+      li.appendChild(row);
+
+      var detail = el("div", "goal-detail");
+      if (g.note) detail.appendChild(el("p", "goal-note", g.note));
       if (amount > 0) {
         var raised = g.done ? amount : Math.min(Number(g.raised) || 0, amount);
         var bar = el("div", "goal-bar");
@@ -186,14 +191,35 @@
         var fill = el("i");
         fill.style.width = (raised / amount * 100) + "%";
         bar.appendChild(fill);
-        body.appendChild(bar);
-        body.appendChild(el("p", "goal-amount",
-          usd(raised) + " / " + usd(amount) + (g.monthly ? " a month" : "")));
+        detail.appendChild(bar);
+        detail.appendChild(el("p", "goal-amount",
+          usd(raised) + " of " + usd(amount) + (g.monthly ? " this month" : " raised")));
       }
-      li.appendChild(body);
+      li.appendChild(detail);
+
+      function toggle(open) {
+        row.setAttribute("aria-expanded", String(open));
+        detail.hidden = !open;
+      }
+      row.addEventListener("click", function () { toggle(detail.hidden); });
+      toggle(i === current);
       root.appendChild(li);
     });
     $("goals").hidden = false;
+
+    // A one-line summary of the current goal right above the coin picker.
+    var g = list[current];
+    if (g) {
+      var now = $("now-quest");
+      var amount = Number(g.amount) || 0;
+      now.appendChild(el("span", "goal-lv", "LV" + (current + 1)));
+      now.appendChild(el("span", "now-text", "Now funding: " + g.title));
+      if (amount > 0) {
+        now.appendChild(el("span", "goal-cost",
+          usd(Math.min(Number(g.raised) || 0, amount)) + " / " + usd(amount) + (g.monthly ? "/mo" : "")));
+      }
+      now.hidden = false;
+    }
   }
 
   function renderWallets() {

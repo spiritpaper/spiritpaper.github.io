@@ -25,12 +25,15 @@
 
   <main class="wrap" id="top">
     <header class="hero">
-      <div class="avatar" id="avatar" aria-hidden="true"></div>
-      <div class="avatar-shadow" aria-hidden="true"></div>
-      <h1 id="name"></h1>
-      <p class="tagline" id="bio"></p>
-      <div class="links" id="links"></div>
-      <p class="press-start" aria-hidden="true">PRESS START</p>
+      <div class="hero-ghost" aria-hidden="true">
+        <div class="avatar" id="avatar"></div>
+        <div class="avatar-shadow"></div>
+      </div>
+      <div class="hero-text">
+        <h1 id="name"></h1>
+        <p class="tagline" id="bio"></p>
+        <div class="links" id="links"></div>
+      </div>
     </header>
 
     <section class="section" id="projects" hidden>
@@ -42,25 +45,16 @@
       <h2 class="section-title"><span class="step-num">2P</span> Support me</h2>
       <p class="section-intro" id="support-text"></p>
 
-      <div class="window" id="goals" hidden>
-        <div class="titlebar" aria-hidden="true">
-          <span>QUESTS.EXE</span>
-          <span class="titlebar-btns"><i></i><i></i><i></i></span>
-        </div>
-        <div class="window-body">
-          <h3 class="step">Where your support goes</h3>
-          <ol class="goal-list" id="goal-list"></ol>
-        </div>
-      </div>
-
       <div class="setup-banner" id="setup-banner" hidden></div>
 
+      <div class="support-grid">
       <div class="window" id="donate" hidden>
         <div class="titlebar" aria-hidden="true">
           <span>SUPPORT.EXE</span>
           <span class="titlebar-btns"><i></i><i></i><i></i></span>
         </div>
         <div class="window-body">
+          <a class="now-quest" id="now-quest" href="#goals" hidden></a>
           <h3 class="step">Select your coin</h3>
           <div class="tabs" role="tablist" id="tabs"></div>
 
@@ -80,6 +74,18 @@
             <p class="warning" id="warning"></p>
           </div>
         </div>
+      </div>
+
+      <div class="window" id="goals" hidden>
+        <div class="titlebar" aria-hidden="true">
+          <span>QUESTS.EXE</span>
+          <span class="titlebar-btns"><i></i><i></i><i></i></span>
+        </div>
+        <div class="window-body">
+          <h3 class="step">Where your support goes</h3>
+          <ol class="goal-list" id="goal-list"></ol>
+        </div>
+      </div>
       </div>
 
       <div class="window other" id="other" hidden>
