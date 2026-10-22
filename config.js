@@ -42,11 +42,13 @@ window.SITE_CONFIG = {
     },
     {
       name: "ChipForge",
-      description: "Turn your music into 8-bit chiptune, compose songs on an emulated NES or Game Boy chip, and make retro sound effects for your games. Works in the browser and offline, with a desktop app and Godot and Unity plugins.",
+      description: "Make retro sound effects and chiptune songs for your games and videos on an emulated NES or Game Boy chip, or turn any song into 8-bit. Royalty-free, runs in your browser and offline, with a desktop app and Godot and Unity plugins.",
       tags: ["Web app", "Desktop", "Godot", "Unity", "Open source"],
       image: "",
       links: [
+        { label: "Open in browser", url: "https://spiritpaper.site/chipforge/app/" },
         { label: "Download", url: "https://github.com/spiritpaper/chipforge/releases/latest" },
+        { label: "Guides", url: "https://spiritpaper.site/chipforge/" },
         { label: "Source", url: "https://github.com/spiritpaper/chipforge" },
       ],
     },
