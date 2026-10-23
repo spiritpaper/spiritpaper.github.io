@@ -60,6 +60,7 @@ window.SITE_CONFIG = {
       image: "images/projects/outlier-lab.webp",
       links: [
         { label: "Download", url: "https://github.com/spiritpaper/outlier-lab/releases/latest" },
+        { label: "Guides", url: "https://spiritpaper.site/outlier-lab/" },
         { label: "Source", url: "https://github.com/spiritpaper/outlier-lab" },
       ],
     },
