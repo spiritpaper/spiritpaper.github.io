@@ -37,6 +37,7 @@ window.SITE_CONFIG = {
       image: "",
       links: [
         { label: "Download", url: "https://github.com/spiritpaper/cursed-git/releases/latest" },
+        { label: "Guides", url: "https://spiritpaper.site/cursed-git/" },
         { label: "Source", url: "https://github.com/spiritpaper/cursed-git" },
       ],
     },
