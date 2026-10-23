@@ -136,7 +136,7 @@
       if (p.image && safeUrl(p.image)) {
         var img = el("img", "project-shot");
         img.src = safeUrl(p.image);
-        img.alt = p.name + " screenshot";
+        img.alt = "";
         img.loading = "lazy";
         card.appendChild(img);
       }
@@ -149,16 +149,33 @@
         p.tags.forEach(function (t) { tags.appendChild(el("span", "chip", t)); });
         body.appendChild(tags);
       }
+      // The first link is the main action and gets the full width. The rest
+      // share one row of equal buttons, so every card lines up.
       var actions = el("div", "project-actions");
+      var more = el("div", "project-more");
       (p.links || []).forEach(function (l, j) {
-        var a = linkButton(l, j === 0 ? "btn" : "btn btn-ghost");
-        if (a) actions.appendChild(a);
+        var a = linkButton(l, j === 0 ? "btn btn-main" : "btn btn-ghost");
+        if (a) (j === 0 ? actions : more).appendChild(a);
       });
+      if (more.children.length) actions.appendChild(more);
       body.appendChild(actions);
       card.appendChild(body);
       root.appendChild(card);
     });
     $("projects").hidden = false;
+  }
+
+  // A tiny decorative picture that bobs next to a goal's title.
+  function goalSticker(g, i) {
+    var src = g.sticker && safeUrl(g.sticker);
+    if (!src) return null;
+    var img = el("img", "goal-sticker");
+    img.src = src;
+    img.alt = "";
+    img.width = 20;
+    img.height = 20;
+    img.style.animationDelay = (i * -0.3) + "s";
+    return img;
   }
 
   function renderGoals() {
@@ -176,6 +193,8 @@
       var row = el("button", "goal-row");
       row.type = "button";
       row.appendChild(el("span", "goal-lv", "LV" + (i + 1)));
+      var sticker = goalSticker(g, i);
+      if (sticker) row.appendChild(sticker);
       row.appendChild(el("span", "goal-title", g.title));
       if (g.done) row.appendChild(el("span", "goal-tag", "CLEAR!"));
       else if (i === current) row.appendChild(el("span", "goal-tag", "NOW"));
@@ -213,6 +232,8 @@
       var now = $("now-quest");
       var amount = Number(g.amount) || 0;
       now.appendChild(el("span", "goal-lv", "LV" + (current + 1)));
+      var sticker = goalSticker(g, current);
+      if (sticker) now.appendChild(sticker);
       now.appendChild(el("span", "now-text", "Now funding: " + g.title));
       if (amount > 0) {
         now.appendChild(el("span", "goal-cost",

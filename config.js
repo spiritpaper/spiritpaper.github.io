@@ -34,7 +34,7 @@ window.SITE_CONFIG = {
       name: "Cursed GIT",
       description: "Like git, but she has feelings: Miranda, a toxic ex who lives in your repo, judges your commits and turns every merge conflict into a boss fight. A terminal game where you learn git by surviving her.",
       tags: ["CLI", "Game", "Linux", "macOS", "Windows", "Open source"],
-      image: "",
+      image: "images/projects/cursed-git.webp",
       links: [
         { label: "Download", url: "https://github.com/spiritpaper/cursed-git/releases/latest" },
         { label: "Guides", url: "https://spiritpaper.site/cursed-git/" },
@@ -45,7 +45,7 @@ window.SITE_CONFIG = {
       name: "ChipForge",
       description: "Make retro sound effects and chiptune songs for your games and videos on an emulated NES or Game Boy chip, or turn any song into 8-bit. Royalty-free, runs in your browser and offline, with a desktop app and Godot and Unity plugins.",
       tags: ["Web app", "Desktop", "Godot", "Unity", "Open source"],
-      image: "",
+      image: "images/projects/chipforge.webp",
       links: [
         { label: "Open in browser", url: "https://spiritpaper.site/chipforge/app/" },
         { label: "Download", url: "https://github.com/spiritpaper/chipforge/releases/latest" },
@@ -54,13 +54,13 @@ window.SITE_CONFIG = {
       ],
     },
     {
-      name: "YT Toolkit",
-      description: "A Chrome extension for YouTube creators: find outlier videos, learn from the channels you follow, and plan, script, film and track your own videos. AI is optional (bring your own key).",
-      tags: ["Chrome extension", "YouTube", "Free"],
-      image: "",
+      name: "Outlier Lab",
+      description: "A creator's lab for YouTube in your browser: find the videos that beat their channel, then plan, test and track your own. Free and local, with optional AI.",
+      tags: ["Chrome extension", "YouTube", "Free", "Open source"],
+      image: "images/projects/outlier-lab.webp",
       links: [
-        { label: "Download", url: "https://github.com/spiritpaper/youtube-toolkit/releases/latest" },
-        { label: "Source", url: "https://github.com/spiritpaper/youtube-toolkit" },
+        { label: "Download", url: "https://github.com/spiritpaper/outlier-lab/releases/latest" },
+        { label: "Source", url: "https://github.com/spiritpaper/outlier-lab" },
       ],
     },
   ],
@@ -74,29 +74,36 @@ window.SITE_CONFIG = {
   //   raised:  dollars received so far for this goal. Update it as donations come in.
   //   monthly: true for an ongoing cost; it shows "a month" and never gets done
   //   done:    true once it's paid for, so donors can see their money was used
+  //   sticker: optional small picture next to the title, e.g. a meme GIF.
+  //            Built in: images/stickers/ bag, cake, heart, dumbbell, monster
   goals: [
     {
-      title: "Google developer account for YT Toolkit",
-      note: "The fee to publish my outlier tool on the Chrome Web Store, so more creators can find it.",
+      title: "Google developer account for Outlier Lab",
+      sticker: "images/stickers/bag.svg",
+      note: "The fee to publish Outlier Lab on the Chrome Web Store, so more creators can find it.",
       amount: 5, raised: 0, done: false,
     },
     {
       title: "A nice cake with my friend",
+      sticker: "images/stickers/cake.svg",
       note: "To celebrate the first win together. Yes, really.",
       amount: 40, raised: 0, done: false,
     },
     {
       title: "Pay my sister back",
+      sticker: "images/stickers/heart.svg",
       note: "She helped me through uni and bought the laptop I build all of this on. She's done a lot for me, so I'm starting with the laptop.",
       amount: 1000, raised: 0, done: false,
     },
     {
       title: "Gym and staying alive",
+      sticker: "images/stickers/dumbbell.svg",
       note: "A gym membership and enough for food and bills, so I can keep making things.",
       amount: 80, raised: 0, monthly: true,
     },
     {
       title: "A monster PC",
+      sticker: "images/stickers/monster.svg",
       note: "A machine that can run my own AI models, and maybe a home lab server one day.",
       amount: 10000, raised: 0, done: false,
     },

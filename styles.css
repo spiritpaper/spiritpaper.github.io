@@ -421,7 +421,13 @@ button.pill { background: none; font: inherit; font-size: 20px; cursor: pointer;
   margin: 0 0 10px;
 }
 .project-desc { margin: 0 0 14px; color: var(--text); }
-.project-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; }
+.project-actions { display: grid; gap: 10px; margin-top: 4px; padding-top: 6px; }
+.project-actions .btn { text-align: center; white-space: nowrap; }
+.btn-main { padding: 14px 12px; }
+/* The other links share one row of equal buttons. On a very narrow phone
+   they wrap, and each line still fills the card. */
+.project-more { display: flex; flex-wrap: wrap; gap: 10px; }
+.project-more .btn { flex: 1 1 0; min-width: max-content; padding: 10px 6px; font-size: 9px; }
 
 .btn-ghost {
   background: transparent;
@@ -457,6 +463,14 @@ button.pill { background: none; font: inherit; font-size: 20px; cursor: pointer;
   padding: 5px;
 }
 .goal-title { flex: 1; min-width: 0; font: 10px/1.6 var(--pixel-font); }
+.goal-sticker {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  image-rendering: pixelated;
+  animation: hop 1.2s steps(2) infinite;
+}
+@keyframes hop { 50% { transform: translateY(-2px) rotate(-6deg); } }
 .goal-tag { flex: none; font: 8px var(--pixel-font); padding: 3px 5px; }
 .goal-cost { flex: none; color: var(--yellow); font-size: 22px; }
 .goal-detail { padding: 0 12px 12px 12px; }
@@ -551,5 +565,5 @@ button.pill { background: none; font: inherit; font-size: 20px; cursor: pointer;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .avatar, .avatar-shadow, .tab.active::before, .goal-tag { animation: none; }
+  .avatar, .avatar-shadow, .tab.active::before, .goal-tag, .goal-sticker { animation: none; }
 }
